@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World!</title>
+</head>
+<body>
+  <dl>
+    <dt>Simple controller</dt>
+    <dd>
+      <div ng-controller="MyController as c">
+        Hello {{c.greetMe}}!
+      </div>
+    </dd>
+
+    <dt>Notify service:</dt>
+    <dd>
+      <div ng-controller="MyController as c">
+        <p>Let's try this simple notify service, injected into the controller...</p>
+        <input ng-init="message='test'" ng-model="message">
+        <button ng-click="c.callNotify(message);">NOTIFY</button>
+        <p>(you have to click 3 times to see an alert)</p>
+      </div>
+    </dd>
+
+    <dt>Example of a component tree</dt>
+    <dd>
+      <hero-list></hero-list>
+    </dd>
+
+    <dt>Intercomponent Communication</dt>
+    <dd>
+      <my-tabs>
+        <my-pane title="Hello">
+          <h4>Hello</h4>
+          <p>Lorem ipsum dolor sit amet</p>
+        </my-pane>
+        <my-pane title="World">
+          <h4>World</h4>
+          <em>Mauris elementum elementum enim at suscipit.</em>
+          <p><a href ng-click="i = i + 1">counter: {{i || 0}}</a></p>
+        </my-pane>
+      </my-tabs>
+    </dd>
+
+    <dt>Custom filters</dt>
+    <dd>
+      <div ng-controller="MyController as c">
+        <input ng-model="c.greeting" type="text"><br>
+        No filter: {{c.greeting}}<br>
+        Reverse: {{c.greeting|reverse}}<br>
+        Reverse + uppercase: {{c.greeting|reverse:true}}<br>
+        Reverse, filtered in controller: {{c.filteredGreeting}}<br>
+      </div>
+    </dd>
+
+    <dt>Directive that Manipulates the DOM</dt>
+    <dd>
+      <div ng-controller="MyController as c">
+        Date format: <input ng-model="c.format"> <hr />
+        Current time is: <span my-current-time="c.format"></span>
+      </div>
+    </dd>
+
+    <dt>Directive that Adds Event Listeners</dt>
+    <dd>
+      <div style="height: 10em; border: 1px ridge; position: relative; overflow: hidden;">
+        <span my-draggable>Drag Me</span>
+      </div>
+    </dd>
+  </dl>
+
+  <script src="angular.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
