@@ -38,7 +38,7 @@ export function modules(...require)
 
 /**
  * Creates a decorator to declare an angular module.
- * Annotates a module class may have a config method used as a
+ * Decorated module class may have a config method used as a
  * module's config function.
  * @param name - a required module name.
  * @param require - optional array of required modules, 
