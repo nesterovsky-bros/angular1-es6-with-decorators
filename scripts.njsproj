@@ -30,6 +30,7 @@
     <Content Include=".gitignore" />
     <Content Include="package.json" />
     <Compile Include="gulpfile.js" />
+    <Content Include="README.md" />
     <Content Include="src\index.html" />
     <Compile Include="src\angular-decorators.js" />
     <Compile Include="src\controllers\myController.js" />
