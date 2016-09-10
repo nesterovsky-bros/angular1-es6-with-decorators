@@ -371,7 +371,9 @@ function directiveFn(name, options, type, component)
     }
   }
 
-  return metadata(injectable(type), {name, register}).$type;
+  return metadata(
+    injectable(type),
+    { name: name + "Directive", register }).$type;
 }
 
 /**
