@@ -37,7 +37,7 @@ export function modules(...require)
 }
 
 /**
- * Creates a decorator to declare an angular module.
+ * Creates a class decorator to declare an angular module.
  * Decorated module class may have a config method used as a
  * module's config function.
  * @param name - a required module name.
@@ -52,7 +52,7 @@ export function Module(name, ...require)
     type = injectable(type);
     metadata(type, { module: name });
 
-    function moduleFn($injector)
+    let moduleFn = $injector =>
     {
       let instance = $injector.instantiate(type);
 
@@ -82,7 +82,7 @@ export function Module(name, ...require)
 }
 
 /**
- * Creates a decorator instance to register angular service.
+ * Creates a class decorator to register angular service.
  * @param name a string used as a service name.
  * @returns a decorator function.
  */
@@ -94,7 +94,7 @@ export function Injectable(name)
 }
 
 /**
- * Creates a decorator instance to register angular directive.
+ * Creates a class decorator to register angular directive.
  * @param name - a directive name.
  * @param options - a directive options.
  * @returns a decorator function.
@@ -105,7 +105,7 @@ export function Directive(name, options)
 }
 
 /**
- * Create a decorator instance to register angular component.
+ * Creates a class decorator to register angular component.
  * @param name - a component name.
  * @param options - a component options.
  * @returns a decorator function.
@@ -116,7 +116,7 @@ export function Component(name, options)
 }
 
 /**
- * Create a decorator instance to register angular controller.
+ * Creates a class decorator to register angular controller.
  * @param name - a controller name.
  * @returns a decorator function.
  */
@@ -128,12 +128,12 @@ export function Controller(name)
 }
 
 /**
- * Creates a decorator instance to register angular filter.
+ * Creates a class decorator to register angular filter.
  * Filter class should have a transform instance function 
  * that will be used to call filter.
  * @param name a string used as a filter name.
- * @param pure indicate whether the filter is pure (true, this is a default value) or
- *   or statefull (false).
+ * @param pure indicate whether the filter is pure 
+ *   (true, this is a default value) or statefull (false).
  * @returns a decorator function.
  */
 export function Pipe(name, pure)
@@ -182,14 +182,14 @@ const maskMethod = 1 << 2;
 export const Inject = makeBinder(maskInject, 0, maskNameOrType);
 
 /**
- * Creates a decorator instance that binds attribute to the property.
+ * Creates a decorator that binds attribute to the property.
  * @param name an attribute name.
  * @returns a decorator function.
  */
 export const Attribute = makeBinder(maskAttribute, maskOptional);
 
 /**
- * Creates a decorator instance that binds a property to
+ * Creates a decorator that binds a property to
  * an expression in attribute. By default binding is one-way, and
  * can be overriden by @TwoWay() decorator.
  * @param name an attribute name.
@@ -199,7 +199,7 @@ export const Input =
   makeBinder(maskInput, maskTwoWay | maskCollection | maskOptional);
 
 /**
- * Creates a decorator instance that provides a way to execute an
+ * Creates a decorator that provides a way to execute an
  * expression in the context of the parent scope.
  * @param name an attribute name.
  * @returns a decorator function.
@@ -207,7 +207,7 @@ export const Input =
 export const Output = makeBinder(maskOutput, maskOptional);
 
 /**
- * Creates a decorator instance that binds a property to
+ * Creates a decorator that binds a property to
  * an expression in attribute in two directions.
  * This decorator must be used with @Input() decorator.
  * @returns a decorator function.
@@ -216,7 +216,7 @@ export const TwoWay =
   makeBinder(maskTwoWay, maskInput | maskOptional, maskNoName);
 
 /**
- * Creates a decorator instance that binds a collection property to
+ * Creates a decorator that binds a collection property to
  * an expression in attribute in two directions.
  * This decorator must be used with @Input() decorator.
  * @returns a decorator function.
@@ -225,7 +225,7 @@ export const Collection =
   makeBinder(maskCollection, maskInput | maskOptional, maskNoName);
 
 /**
- * Creates a decorator instance that binds a property to a host controller
+ * Creates a decorator that binds a property to a host controller
  * of a directive found on the element or its ancestors.
  * @param name an directive name or type.
  * @returns a decorator function.
@@ -234,7 +234,7 @@ export const Host =
   makeBinder(maskHost, maskInput | maskOptional, maskNameOrType);
 
 /**
- * Creates a decorator instance that binds a property to a host controller
+ * Creates a decorator that binds a property to a host controller
  * of a directive found on the element.
  * @param name an directive name or type.
  * @returns a decorator function.
@@ -242,7 +242,7 @@ export const Host =
 export const Self = makeBinder(maskSelf, maskOptional, maskNameOrType);
 
 /**
- * Creates a decorator instance that binds a property to a host controller
+ * Creates a decorator that binds a property to a host controller
  * of a directive found on the ancestors of the element.
  * @param name an directive name or type.
  * @returns a decorator function.
@@ -251,13 +251,13 @@ export const SkipSelf =
   makeBinder(maskSkipSelf, maskOptional, maskNameOrType);
 
 /**
- * Creates a decorator instance that optionally binds a property.
+ * Creates a decorator that optionally binds a property.
  * @returns a decorator function.
  */
 export const Optional = makeBinder(maskOptional, 0, maskNoName);
 
 /**
- * Creates a decorator instance that binds method to a host event.
+ * Creates a decorator that binds method to a host event.
  * For this binding to work one should inject $element instance, like this:
  *   '@Inject() $element;'
  * @param name an event name.
