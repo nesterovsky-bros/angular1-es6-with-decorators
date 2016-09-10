@@ -95,13 +95,13 @@ export class MyTabs // Controller class for the component
 @Directive("myCurrentTime") // Decorate MyCurrentTime class a directive
 export class MyCurrentTime // Controller class for the component
 {
-  @Inject() $interval; // $interval property injected with &quot;$interval&quot; service.
-  @Inject() dateFilter; // dateFilter property injected with &quot;date&quot; filter service.
-  @Inject() $element; // $element property injected with &quot;$element&quot;.
+  @Inject() $interval; // &quot;$interval&quot; service is injected into $interval property
+  @Inject() dateFilter; // &quot;date&quot; filter service is injected into dateFilter property
+  @Inject() $element; // &quot;$element&quot; instance is injected into $element property.
   @Input() myCurrentTime; // Input one way property.
   timeoutId;
 
-  // adapted as following in constructor: 
+  // Adapted as following in constructor: 
   //   this.updateTime = this.updateTime.bind(this);
   @BindThis() updateTime() 
   {

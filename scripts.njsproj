@@ -46,6 +46,8 @@
     <Content Include="src\templates\my-tabs.html" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="dist\" />
+    <Folder Include="dist\templates\" />
     <Folder Include="src" />
     <Folder Include="src\controllers\" />
     <Folder Include="src\directives\" />
