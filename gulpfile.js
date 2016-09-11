@@ -34,7 +34,7 @@ var config =
     },
     angular: 
     {
-      hasExports: true, // this is to forse to assign to global require.
+      hasExports: true, // this is to force to assign to global require.
       require:
       [
         [
