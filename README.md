@@ -28,7 +28,7 @@
     <p>Component's and Directive's <code>options</code> is the same object passed into <code>Module.component(), Module.directive()</code> calls with difference that no 
       <code>options.bindings</code>, <code>options.scope</code>, <code>options.require</code> is specified.
     Instead <code>@Attribute(), @Input(), @Output(), @TwoWay(), @Collection(), @Optional()</code> are used to describe <code>options.bindings</code>, and
-    <code>@Host(), Self(), SkipSelf(), @Optional()</code> are used to describe <code>options.require</code></p>
+    <code>@Host(), Self(), SkipSelf(), @Optional()</code> are used to describe <code>options.require</code>.</p>
 
     <p>Every decorated class can use <code>@Inject()</code> member decorator to inject a service.</p>
   </li>
@@ -296,7 +296,7 @@ export class ReverseFilter
 }</pre></dd>
   <dt>Module(), modules(), angular.bootstrap()</dt>
   <dd>
-    Here are an examples of a class representing angular module, and manual angular bootstrap:
+    Here are examples of a class representing angular module, and manual angular bootstrap:
     <pre style="white-space: pre-wrap">import { angular, modules, Module } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 import { MyController } from "<a href="src/controllers/myController.js">./controllers/myController</a>"; // Import components.
 import { HeroList } from "<a href="src/components/heroList.js">./components/heroList</a>";
