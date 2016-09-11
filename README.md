@@ -25,7 +25,7 @@
       <li><code>Pipe(name, pure?)</code> - a decorator to register angular filter.</li>
     </ul>
 
-    <p>Component's and Directive's options is the same object passed into <code>Module.component(), Module.directive()</code> calls with difference that no 
+    <p>Component's and Directive's <code>options</code> is the same object passed into <code>Module.component(), Module.directive()</code> calls with difference that no 
       <code>options.bindings</code>, <code>options.scope</code>, <code>options.require</code> is specified.
     Instead <code>@Attribute(), @Input(), @Output(), @TwoWay(), @Collection(), @Optional()</code> are used to describe <code>options.bindings</code>, and
     <code>@Host(), Self(), SkipSelf(), @Optional()</code> are used to describe <code>options.require</code></p>
