@@ -54,15 +54,16 @@ This means that you can write in the modern javascript, including decorators. At
 <p>Now we can start with samples. Please note that we used samples scattered here and there on the Anuglar site.</p>
 
 <dl>
-  <dt><code>@Component()</code></dt>
+  <dt><code>@Component(),  @SkipSelf(), @Attribute()</code></dt>
   <dd>
     <br />
-    In the <a href="https://docs.angularjs.org/guide/component">Angular's component development guide</a> there is a sample <code>myTabs</code> component.
-    Here it's rewritten as following (see <a href="src/components/myTabs.js">components/myTabs.js</a>):
-    <pre>import { Component } from "../angular-decorators"; // Import Component decorator
-import template from "../templates/my-tabs.html"; // Import template for my-tabs component
+    In the <a href="https://docs.angularjs.org/guide/component">Angular's component development guide</a> there is a sample <code>myTabs</code> and <code>myPane</code> components.<br />
+    Here its rewritten form
+    <a href="src/components/myTabs.js">components/myTabs.js</a>:
+    <pre>import { Component } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+import template from "<a href="src/templates/my-tabs.html">../templates/my-tabs.html</a>"; // Import template for my-tabs component
 
-@Component("myTabs", { template, transclude: true }) // Decorate class MyTabs as component
+@Component("myTabs", { template, transclude: true }) // Decorate class as a component
 export class MyTabs // Controller class for the component
 {
   panes = []; // List of active panes
@@ -83,25 +84,70 @@ export class MyTabs // Controller class for the component
     this.panes.push(pane);
   }
 }</pre>
-  </dd>
+    <a href="src/components/myTabs.js">components/myPane.js</a>:
+<pre>import { Component, Attribute, SkipSelf } "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+import { MyTabs } from "<a href="src/components/myTabs.js">./myTabs</a>"; // Import container&#39;s directive.
+import template from "<a href="src/templates/my-pane.html">../templates/my-pane.html</a>"; // Import template.
 
+@Component("myPane", { template, transclude: true }) // Decorate class as a component
+export class MyPane // Controller class for the component
+{
+  @SkipSelf(MyTabs) tabsCtrl; //Inject ancestor MyTabs controller.
+  @Attribute() title; // Attribute &quot;@&quot; binding.
+
+  $onInit() // Angular&#39;s $onInit life-cycle hook.
+  {
+    this.tabsCtrl.addPane(this);
+    console.log(this);
+  };
+}    </pre>
+  </dd>
+  <dt>@Component(), @Input(), @Output()</dt>
+  <dd>
+    In the <a href="https://docs.angularjs.org/guide/component">Angular's component development guide</a> there is a sample <code>myTabs</code> component.<br />
+    Here its rewritten form
+    <a href="src/components/heroDetail.js">components/heroDetail.js</a>:<br />
+    <pre>import { Component, Input, Output } from "<a href="src/angular-decorators.js">../angular-decorators</a>";
+import template from "<a href="src/templates/heroDetail.html">../templates/heroDetail.html</a>";
+
+@Component("heroDetail", { template }) // Decorate class as a component
+export class HeroDetail // Controller class for the component
+{
+  @Input() hero; // One way binding &quot;&lt;&quot;
+  @Output() onDelete; // Bind expression in the context of the parent scope &quot;&amp;&quot;
+  @Output() onUpdate; // Bind expression in the context of the parent scope &quot;&amp;&quot;
+
+  delete()
+  {
+    this.onDelete({ hero: this.hero });
+  };
+
+  update(prop, value)
+  {
+    this.onUpdate({ hero: this.hero, prop, value });
+  };
+}</pre>
+  </dd>
   <dt><code>@Directive(), @Inject(), @Input(), @BindThis()</code></dt>
   <dd>
+    <div>
     <br />
-    In the <a href="https://docs.angularjs.org/guide/directive">Angular's directive development guide</a> there is a sample <code>myCurrentTime</code> directive.
-    Here it's rewritten as following (see <a href="src/components/myCurrentTime.js">components/myCurrentTime.js</a>):
-    <pre>import { Directive, Inject, Input, BindThis } from "../angular-decorators"; // Import decorators
+    In the <a href="https://docs.angularjs.org/guide/directive">Angular's directive development guide</a> there is a sample <code>myCurrentTime</code> directive.<br />
+      Here its rewritten form
+    <a href="src/directives/myCurrentTime.js">directives/myCurrentTime.js</a>:
+    </div>
+    <pre>import { Directive, Inject, Input, BindThis } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 
-@Directive("myCurrentTime") // Decorate MyCurrentTime class a directive
-export class MyCurrentTime // Controller class for the component
+@Directive("myCurrentTime") // Decorate MyCurrentTime class as a directive
+export class MyCurrentTime // Controller class for the directive
 {
   @Inject() $interval; // &quot;$interval&quot; service is injected into $interval property
   @Inject() dateFilter; // &quot;date&quot; filter service is injected into dateFilter property
   @Inject() $element; // &quot;$element&quot; instance is injected into $element property.
-  @Input() myCurrentTime; // Input one way property.
+  @Input() myCurrentTime; // Input one way &quot;&lt;&quot; property.
   timeoutId;
 
-  // Adapted as following in constructor: 
+  // updateTime is adapted as following in the constructor: 
   //   this.updateTime = this.updateTime.bind(this);
   @BindThis() updateTime() 
   {
@@ -125,7 +171,157 @@ export class MyCurrentTime // Controller class for the component
 }
 </pre>
   </dd>
+  <dt><code>@Directive(), @Inject(), @HostListener(), @BindThis()</code></dt>
+  <dd>
+    <br />
+    In the <a href="https://docs.angularjs.org/guide/directive">Angular's directive development guide</a> there is a sample <code>myDraggable</code> directive.
+    Here its rewritten form. <a href="src/directives/myDraggable.js">directives/myDraggable.js</a>:
+    <pre>import { Directive, Inject, HostListener, BindThis } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+
+@Directive("myDraggable") // Decorate class as a directive
+export class MyDraggable // Controller class for the directive
+{
+  @Inject() $document; // &quot;$document&quot; instance is injected into $document property.
+  @Inject() $element;// &quot;$element&quot; instance is injected into $element property.
+
+  startX = 0;
+  startY = 0;
+  x = 0;
+  y = 0;
+
+  // Listen mousedown event over $element.
+  @HostListener() mousedown(event)
+  {
+    // Prevent default dragging of selected content
+    event.preventDefault();
+    this.startX = event.pageX - this.x;
+    this.startY = event.pageY - this.y;
+    this.$document.on('mousemove', this.mousemove);
+    this.$document.on('mouseup', this.mouseup);
+  }
+
+  @BindThis() mousemove(event) // bind mousemove() function to &quot;this&quot; instance.
+  {
+    this.y = event.pageY - this.startY;
+    this.x = event.pageX - this.startX;
+    this.$element.css({
+      top: this.y + 'px',
+      left: this.x + 'px'
+    });
+  }
+
+  @BindThis() mouseup() // bind mouseup() function to &quot;this&quot; instance.
+  {
+    this.$document.off('mousemove', this.mousemove);
+    this.$document.off('mouseup', this.mouseup);
+  }
+
+  $onInit() // Angular&#39;s $onInit life-cycle hook.
+  {
+    this.$element.css(
+    {
+      position: 'relative',
+      border: '1px solid red',
+      backgroundColor: 'lightgrey',
+      cursor: 'pointer'
+    });
+  }
+}</pre>
+  </dd>
+  <dt><code>@Injectable(), @Inject()</code></dt>
+  <dd>
+    <br />
+    In the <a href="https://docs.angularjs.org/guide/providers">Angular's providers development guide</a> there is a sample <code>notifier</code> service.
+    Here its rewritten form. <a href="src/services/notify.js">services/notify.js</a>:
+    <pre>import { Inject, Injectable } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+
+@Injectable("notifier") // Decorate class as a service
+export class NotifierService
+{
+  @Inject() $window; // Inject &quot;$window&quot; instance into the property
+
+  msgs = [];
+
+  notify(msg)
+  {
+    this.msgs.push(msg);
+
+    if (this.msgs.length === 3)
+    {
+      this.$window.alert(this.msgs.join('\n'));
+      this.msgs = [];
+    }
+  }
+}</pre>
+  </dd>
+  <dt><code>@Pipe()</code></dt>
+  <dd>
+    <br />
+    In the <a href="https://docs.angularjs.org/guide/filter">Angular's filters development guide</a> there is a sample <code>reverse</code> custom filter.
+    Here its rewritten form. <a href="src/filters/reverse.js">filters/reverse.js</a>:
+<pre>import { Pipe } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+
+@Pipe("reverse") // Decorate class as a filter
+export class ReverseFilter
+{
+  transform(input, uppercase) // filter function.
+  {
+    input = input || '';
+
+    var out = '';
+
+    for(var i = 0; i < input.length; i++)
+    {
+      out = input.charAt(i) + out;
+    }
+
+    // conditional based on optional argument
+    if (uppercase)
+    {
+      out = out.toUpperCase();
+    }
+
+    return out;
+  }
+}</pre></dd>
+  <dt>Module(), modules(), angular.bootstrap()</dt>
+  <dd>
+    Here are an examples of a class representing angular module, and manual angular bootstrap:
+    <pre>
+import { angular, modules, Module } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+import { MyController } from "<a href="src/controllers/myController.js">./controllers/myController</a>"; // Import components.
+import { HeroList } from "<a href="src/components/heroList.js">./components/heroList</a>";
+import { HeroDetail } from "<a href="src/components/heroDetail.js">./components/heroDetail</a>";
+import { EditableField } from "<a href="src/components/editableField.js">./components/editableField</a>";
+import { NotifierService } from "<a href="src/services/notify.js">./services/notify</a>";
+import { MyTabs } from "<a href="src/components/myTabs.js">./components/myTabs</a>";
+import { MyPane } from "<a href="src/components/myPane.js">./components/myPane</a>";
+import { ReverseFilter } from "<a href="src/filters/reverse.js">./filters/reverse</a>";
+import { MyCurrentTime } from "<a href="src/directives/myCurrentTime.js">./directives/myCurrentTime</a>";
+import { MyDraggable } from "<a href="src/directives/myDraggable.js">./directives/myDraggable</a>";
+
+@Module( // Decorator to register angular module, and refer to other modules or module components.
+  "my-app",
+  [
+    MyController,
+    NotifierService,
+    HeroList,
+    HeroDetail,
+    EditableField,
+    MyTabs,
+    MyPane,
+    ReverseFilter,
+    MyCurrentTime,
+    MyDraggable
+  ])
+class MyApp { }
+
+// Manual bootstrap, with modules() converting module classes into an array of module names.
+angular.bootstrap(document, modules(MyApp));</pre>
+  </dd>
 </dl>
-<p>
-  TODO:</p>
+<p>Please see <a href="src/angular-decorators.js">angular-decorators.js</a> to get detailed help on decorators.</p>
+
+
+
 
