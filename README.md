@@ -4,7 +4,7 @@
 
 <p>Angular 2 is already available though there are a lot of code and libraries that are still in Angular 1.x. 
   Here we outline how to write AngularJS 1.x in the modern javascript.</p>
-<p>Prerequisites: <a href="https://github.com/lukehoban/es6features">EcmaScript 2015</a>, <a href="https://github.com/wycats/javascript-decorators">javascript decorators</a>, <a href="https://docs.angularjs.org/guide">AngularJS 1.x</a>. <b>No knowledge of <a href="https://angular.io/">Angular 2.0</a> are required.</b></p>
+<p>Prerequisites: <a href="https://github.com/lukehoban/es6features">EcmaScript 2015</a>, <a href="https://github.com/wycats/javascript-decorators">javascript decorators</a>, <a href="https://docs.angularjs.org/guide">AngularJS 1.x</a>. <b>No knowledge of <a href="https://angular.io/">Angular 2.0</a> is required.</b></p>
 <p>Please note that decorators we have introduced, while resemble those from Angular 2, do not match them exactly.</p>
 
 <p>A sample uses <a href="https://nodejs.org/">nodejs</a>, <a href="https://www.npmjs.com/">npm</a> and <a href="http://gulpjs.com/">gulp</a> as a building pipeline. In addition we have added <a href="https://www.visualstudio.com/en-us/features/node-js-vs.aspx">Visual Studio Nodejs project</a>, and <a href="https://maven.apache.org/">maven project</a>.</p>
