@@ -60,7 +60,7 @@ This means that you can write in the modern javascript, including decorators. At
     In the <a href="https://docs.angularjs.org/guide/component">Angular's component development guide</a> there is a sample <code>myTabs</code> and <code>myPane</code> components.<br />
     Here its rewritten form
     <a href="src/components/myTabs.js">components/myTabs.js</a>:
-    <pre>import { Component } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+    <pre style="white-space: pre-wrap">import { Component } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 import template from "<a href="src/templates/my-tabs.html">../templates/my-tabs.html</a>"; // Import template for my-tabs component
 
 @Component("myTabs", { template, transclude: true }) // Decorate class as a component
@@ -85,7 +85,7 @@ export class MyTabs // Controller class for the component
   }
 }</pre>
     <a href="src/components/myTabs.js">components/myPane.js</a>:
-<pre>import { Component, Attribute, SkipSelf } "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+<pre style="white-space: pre-wrap">import { Component, Attribute, SkipSelf } "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 import { MyTabs } from "<a href="src/components/myTabs.js">./myTabs</a>"; // Import container&#39;s directive.
 import template from "<a href="src/templates/my-pane.html">../templates/my-pane.html</a>"; // Import template.
 
@@ -107,7 +107,7 @@ export class MyPane // Controller class for the component
     In the <a href="https://docs.angularjs.org/guide/component">Angular's component development guide</a> there is a sample <code>myTabs</code> component.<br />
     Here its rewritten form
     <a href="src/components/heroDetail.js">components/heroDetail.js</a>:<br />
-    <pre>import { Component, Input, Output } from "<a href="src/angular-decorators.js">../angular-decorators</a>";
+    <pre style="white-space: pre-wrap">import { Component, Input, Output } from "<a href="src/angular-decorators.js">../angular-decorators</a>";
 import template from "<a href="src/templates/heroDetail.html">../templates/heroDetail.html</a>";
 
 @Component("heroDetail", { template }) // Decorate class as a component
@@ -136,7 +136,7 @@ export class HeroDetail // Controller class for the component
       Here its rewritten form
     <a href="src/directives/myCurrentTime.js">directives/myCurrentTime.js</a>:
     </div>
-    <pre>import { Directive, Inject, Input, BindThis } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+    <pre style="white-space: pre-wrap">import { Directive, Inject, Input, BindThis } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 
 @Directive("myCurrentTime") // Decorate MyCurrentTime class as a directive
 export class MyCurrentTime // Controller class for the directive
@@ -176,7 +176,7 @@ export class MyCurrentTime // Controller class for the directive
     <br />
     In the <a href="https://docs.angularjs.org/guide/directive">Angular's directive development guide</a> there is a sample <code>myDraggable</code> directive.
     Here its rewritten form. <a href="src/directives/myDraggable.js">directives/myDraggable.js</a>:
-    <pre>import { Directive, Inject, HostListener, BindThis } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+    <pre style="white-space: pre-wrap">import { Directive, Inject, HostListener, BindThis } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 
 @Directive("myDraggable") // Decorate class as a directive
 export class MyDraggable // Controller class for the directive
@@ -233,7 +233,7 @@ export class MyDraggable // Controller class for the directive
     <br />
     In the <a href="https://docs.angularjs.org/guide/providers">Angular's providers development guide</a> there is a sample <code>notifier</code> service.
     Here its rewritten form. <a href="src/services/notify.js">services/notify.js</a>:
-    <pre>import { Inject, Injectable } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+    <pre style="white-space: pre-wrap">import { Inject, Injectable } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 
 @Injectable("notifier") // Decorate class as a service
 export class NotifierService
@@ -259,7 +259,7 @@ export class NotifierService
     <br />
     In the <a href="https://docs.angularjs.org/guide/filter">Angular's filters development guide</a> there is a sample <code>reverse</code> custom filter.
     Here its rewritten form. <a href="src/filters/reverse.js">filters/reverse.js</a>:
-<pre>import { Pipe } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+<pre style="white-space: pre-wrap">import { Pipe } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 
 @Pipe("reverse") // Decorate class as a filter
 export class ReverseFilter
@@ -287,8 +287,7 @@ export class ReverseFilter
   <dt>Module(), modules(), angular.bootstrap()</dt>
   <dd>
     Here are an examples of a class representing angular module, and manual angular bootstrap:
-    <pre>
-import { angular, modules, Module } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
+    <pre style="white-space: pre-wrap">import { angular, modules, Module } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 import { MyController } from "<a href="src/controllers/myController.js">./controllers/myController</a>"; // Import components.
 import { HeroList } from "<a href="src/components/heroList.js">./components/heroList</a>";
 import { HeroDetail } from "<a href="src/components/heroDetail.js">./components/heroDetail</a>";
