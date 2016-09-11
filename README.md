@@ -1,6 +1,6 @@
 <h1>angular1-es6-with-decorators</h1>
 
-<p>An example of angular 1.x application written in ES 2015 with decorators that resemble angular 2.</p>
+<p>An example of angular 1.x application written in ES 2015 (modern javascript) with decorators that resemble angular 2.</p>
 
 <p>Angular 2 is already available though there are a lot of code and libraries that are still in Angular 1.x. 
 Here we outline a transition path from Angular 1.x to Angular 2.
