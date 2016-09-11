@@ -1,12 +1,11 @@
 <h1>angular1-es6-with-decorators</h1>
 
-<p>An example of angular 1.x application written in ES 2015 (modern javascript) with decorators that resemble angular 2.</p>
+<p>An example of AngularJS 1.x application written in ES 2015 (modern javascript) with decorators that resemble Angular 2.</p>
 
 <p>Angular 2 is already available though there are a lot of code and libraries that are still in Angular 1.x. 
-Here we outline a transition path from Angular 1.x to Angular 2.
-This means that you can write in the modern javascript, including decorators. At the same time all existing code and libraries are still available.</p>
-
-<p>Please note that decorators we have introduced, while resemble those from Angular 2, do not match exactly.</p>
+  Here we outline how to write AngularJS 1.x in the modern javascript.</p>
+<p>Prerequisites: <a href="https://github.com/lukehoban/es6features">EcmaScript 2015</a>, <a href="https://github.com/wycats/javascript-decorators">javascript decorators</a>, <a href="https://docs.angularjs.org/guide">AngularJS 1.x</a>. <b>No knowledge of <a href="https://angular.io/">Angular 2.0</a> are required.</b></p>
+<p>Please note that decorators we have introduced, while resemble those from Angular 2, do not match them exactly.</p>
 
 <p>A sample uses <a href="https://nodejs.org/">nodejs</a>, <a href="https://www.npmjs.com/">npm</a> and <a href="http://gulpjs.com/">gulp</a> as a building pipeline. In addition we have added <a href="https://www.visualstudio.com/en-us/features/node-js-vs.aspx">Visual Studio Nodejs project</a>, and <a href="https://maven.apache.org/">maven project</a>.</p>
 
@@ -174,7 +173,7 @@ export class MyCurrentTime // Controller class for the directive
   <dt><code>@Directive(), @Inject(), @HostListener(), @BindThis()</code></dt>
   <dd>
     <br />
-    In the <a href="https://docs.angularjs.org/guide/directive">Angular's directive development guide</a> there is a sample <code>myDraggable</code> directive.
+    In the <a href="https://docs.angularjs.org/guide/directive">Angular's directive development guide</a> there is a sample <code>myDraggable</code> directive.<br />
     Here its rewritten form. <a href="src/directives/myDraggable.js">directives/myDraggable.js</a>:
     <pre style="white-space: pre-wrap">import { Directive, Inject, HostListener, BindThis } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 
@@ -231,7 +230,7 @@ export class MyDraggable // Controller class for the directive
   <dt><code>@Injectable(), @Inject()</code></dt>
   <dd>
     <br />
-    In the <a href="https://docs.angularjs.org/guide/providers">Angular's providers development guide</a> there is a sample <code>notifier</code> service.
+    In the <a href="https://docs.angularjs.org/guide/providers">Angular's providers development guide</a> there is a sample <code>notifier</code> service.<br />
     Here its rewritten form. <a href="src/services/notify.js">services/notify.js</a>:
     <pre style="white-space: pre-wrap">import { Inject, Injectable } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 
@@ -257,7 +256,7 @@ export class NotifierService
   <dt><code>@Pipe()</code></dt>
   <dd>
     <br />
-    In the <a href="https://docs.angularjs.org/guide/filter">Angular's filters development guide</a> there is a sample <code>reverse</code> custom filter.
+    In the <a href="https://docs.angularjs.org/guide/filter">Angular's filters development guide</a> there is a sample <code>reverse</code> custom filter.<br />
     Here its rewritten form. <a href="src/filters/reverse.js">filters/reverse.js</a>:
 <pre style="white-space: pre-wrap">import { Pipe } from "<a href="src/angular-decorators.js">../angular-decorators</a>"; // Import decorators
 
