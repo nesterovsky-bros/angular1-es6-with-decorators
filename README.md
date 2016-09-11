@@ -3,7 +3,7 @@
 <p>An example of AngularJS 1.x application written in ES 2015 (modern javascript) with decorators that resemble Angular 2.</p>
 
 <p>Angular 2 is already available though there are a lot of code and libraries that are still in Angular 1.x. 
-  Here we outline how to write AngularJS 1.x in the modern javascript.</p>
+  Here we outline how to write <b>AngularJS 1.x</b> in the modern javascript.</p>
 <p>Prerequisites: <a href="https://github.com/lukehoban/es6features">EcmaScript 2015</a>, <a href="https://github.com/wycats/javascript-decorators">javascript decorators</a>, <a href="https://docs.angularjs.org/guide">AngularJS 1.x</a>. <b>No knowledge of <a href="https://angular.io/">Angular 2.0</a> is required.</b></p>
 <p>Please note that decorators we have introduced, while resemble those from Angular 2, do not match them exactly.</p>
 
