@@ -12,7 +12,7 @@ This means that you can write in the modern javascript, including decorators. At
 
 <p>Build pipeline uses <a href="http://babeljs.io/">Babel</a> with ES 2015 and decorator plugins to transpile sources into javascript that today's browsers do support. Babel can be replaced or augmented with Typescript compiler to support Microsoft's javascript extensions. Sources are combinded and optionally minified into one or more javascript bundles. In addition html template files are transformed into javascript modules that export a content of html body as a string literals. In general all sources are in src foulder and the build's output is assembled in the dist folder. Details of build process are in <a href="gulpfile.js">gulpfile.js</a></p>
 
-<p>So, let's introduce an API we have defined in <code>angular-decorators.js</code> module:</p>
+<p>So, let's introduce an API we have defined in <a href="src/angular-decorators.js">angular-decorators.js</a> module:</p>
 
 <ul>
   <li>
@@ -58,7 +58,7 @@ This means that you can write in the modern javascript, including decorators. At
   <dd>
     <br />
     In the <a href="https://docs.angularjs.org/guide/component">Angular's component development guide</a> there is a sample <code>myTabs</code> component.
-    Here it's rewritten as following (see <a href="components/myTabs.js">components/myTabs.js</a>):
+    Here it's rewritten as following (see <a href="src/components/myTabs.js">components/myTabs.js</a>):
     <pre>import { Component } from "../angular-decorators"; // Import Component decorator
 import template from "../templates/my-tabs.html"; // Import template for my-tabs component
 
@@ -89,7 +89,7 @@ export class MyTabs // Controller class for the component
   <dd>
     <br />
     In the <a href="https://docs.angularjs.org/guide/directive">Angular's directive development guide</a> there is a sample <code>myCurrentTime</code> directive.
-    Here it's rewritten as following (see <a href="components/myCurrentTime.js">components/myCurrentTime.js</a>):
+    Here it's rewritten as following (see <a href="src/components/myCurrentTime.js">components/myCurrentTime.js</a>):
     <pre>import { Directive, Inject, Input, BindThis } from "../angular-decorators"; // Import decorators
 
 @Directive("myCurrentTime") // Decorate MyCurrentTime class a directive
