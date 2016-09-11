@@ -24,6 +24,13 @@
       <li><code>Module(name, ...require)</code> - a decorator to declare an angular module;</li>
       <li><code>Pipe(name, pure?)</code> - a decorator to register angular filter.</li>
     </ul>
+
+    <p>Component's and Directive's options is the same object passed into <code>Module.component(), Module.directive()</code> calls with difference that no 
+      <code>options.bindings</code>, <code>options.scope</code>, <code>options.require</code> is specified.
+    Instead <code>@Attribute(), @Input(), @Output(), @TwoWay(), @Collection(), @Optional()</code> are used to describe <code>options.bindings</code>, and
+    <code>@Host(), Self(), SkipSelf(), @Optional()</code> are used to describe <code>options.require</code></p>
+
+    <p>Every decorated class can use <code>@Inject()</code> member decorator to inject a service.</p>
   </li>
   <li>
     Member decorators:
@@ -41,6 +48,10 @@
       <li><code>SkipSelf(name?)</code> - a decorator that binds a property to a host controller of a directive found on the ancestors of the element.</li>
       <li><code>TwoWay()</code> - a decorator that binds a property to an expression in attribute in two directions.</li>
     </ul>
+
+    <p>If optional name is omitted in the member decorator then property name is used as a name parameter.
+    <code>@Host(), @Self(), @SkipSelf()</code> accept class decorated with <code>@Component()</code> or <code>@Directive()</code> as a name parameter.</p>
+    <p><code>@Inject()</code> accepts class decorated with <code>@Injectable()</code> or <code>@Pipe()</code> as a name parameter.</p>
   </li>
   <li>
     Other:
@@ -319,7 +330,3 @@ angular.bootstrap(document, modules(MyApp));</pre>
   </dd>
 </dl>
 <p>Please see <a href="src/angular-decorators.js">angular-decorators.js</a> to get detailed help on decorators.</p>
-
-
-
-
